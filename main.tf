@@ -23,4 +23,16 @@ module "lambda_function_existing_package_local" {
 
 
   handler                = var.lambda.handler
-  local_existing_package = "${path.module}/src/${var.lambda.package.artifact}"
+  local_existing_package = "./src/${var.lambda.package.artifact}"
+
+}
+
+resource "aws_lambda_event_source_mapping" "sqs" {
+  count = contains(keys(var.lambda.events), "sqs") ? 1 : 0
+
+  event_source_arn = var.sqs_event_source_arn
+
+  function_name = module.lambda_function_existing_package_local.lambda_function_arn
+  batch_size    = lookup(var.lambda.events.sqs, "batchSize", 6)
+}
+

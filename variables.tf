@@ -19,6 +19,12 @@ variable "lambda" {
   default     = {}
 }
 
+variable "sqs_event_source_arn" {
+  type        = string
+  description = "ARN to SQS"
+  default     = null
+}
+
 variable "policy" {
   type = object({
     arn = string
