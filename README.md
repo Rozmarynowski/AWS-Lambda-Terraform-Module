@@ -33,7 +33,7 @@ functions:
       artifact: Tester2/Tester2.zip
     events:
       s3:
-        bucket_name: offline-receipts
+        bucket_name: test-bucket
         batchSize: 1
     environment:
       environment: stg
