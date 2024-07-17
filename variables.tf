@@ -21,8 +21,16 @@ variable "lambda" {
 
 variable "sqs_event_source_arn" {
   type        = string
-  description = "ARN to SQS"
+  description = "ARN to SQS that triggers lambda"
   default     = null
+}
+
+variable "s3_event_source" {
+  type = object({
+    bucket_arn  = string
+    bucket_name = string
+  })
+  description = "The name and arn of the S3 bucket that triggers lambda"
 }
 
 variable "policy" {
