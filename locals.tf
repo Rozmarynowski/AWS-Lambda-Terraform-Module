@@ -11,7 +11,9 @@ locals {
     reserved_concurrent_executions = lookup(var.lambda, "reservedConcurrency", -1)             # -1
     runtime                        = lookup(var.lambda, "runetime", "dotnet6")                 # dotnet6
     timeout                        = lookup(var.lambda, "timeout", 6)                          # 6
-
+    vpc                            = lookup(var.lambda, "vpc", false)                          # false
+    vpc_subnet_ids                 = lookup(var.lambda, "vpc_subnet_ids", [])                  # []
+    vpc_security_group_ids         = lookup(var.lambda, "vpc_security_group_ids", [])          # false
   }
 
 }

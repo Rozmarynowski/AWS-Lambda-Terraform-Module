@@ -24,6 +24,12 @@ module "lambda_function_existing_package_local" {
 
   handler                = var.lambda.handler
   local_existing_package = "./src/${var.lambda.package.artifact}"
+
+  environment_variables = var.lambda.environment
+
+  vpc_subnet_ids         = local.lambda.vpc ? local.lambda.vpc_subnet_ids : null
+  vpc_security_group_ids = local.lambda.vpc ? local.lambda.vpc_security_group_ids : null
+
 }
 
 resource "aws_lambda_event_source_mapping" "sqs-lambda-trigger" {
