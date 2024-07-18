@@ -33,6 +33,12 @@ variable "s3_event_source" {
   description = "The name and arn of the S3 bucket that triggers lambda"
 }
 
+variable "kafka_event_source_arn" {
+  type        = string
+  description = "ARN to Kafka (MSK) that triggers lambda"
+  default     = null
+}
+
 variable "policy" {
   type = object({
     arn = string
