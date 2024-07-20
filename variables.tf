@@ -19,6 +19,12 @@ variable "lambda" {
   default     = {}
 }
 
+variable "dynamic_envs" {
+  type        = any
+  description = "Additional dynamic variabbles for other AWS resources"
+  default     = {}
+}
+
 variable "sqs_event_source_arn" {
   type        = string
   description = "ARN to SQS that triggers lambda"

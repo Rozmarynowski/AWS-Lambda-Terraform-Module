@@ -25,7 +25,7 @@ module "lambda_function_existing_package_local" {
   handler                = var.lambda.handler
   local_existing_package = "./src/${var.lambda.package.artifact}"
 
-  environment_variables = var.lambda.environment
+  environment_variables = merge(var.lambda.environment, var.dynamic_envs)
 
   vpc_subnet_ids         = local.lambda.vpc ? local.lambda.vpc_subnet_ids : null
   vpc_security_group_ids = local.lambda.vpc ? local.lambda.vpc_security_group_ids : null
