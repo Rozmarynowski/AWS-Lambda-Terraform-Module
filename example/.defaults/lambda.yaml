@@ -1,0 +1,4 @@
+architectures: 
+  - x86_64
+runtime: dotnet6
+package_type: Zip

@@ -1,0 +1,51 @@
+functions:
+ tester-1:
+    handler: tester1::tester1.Function::FunctionHandler
+    memorySize: 1024
+    reservedConcurrency: 3
+    timeout: 600
+    vpc: false
+    package:
+      artifact: tester1/tester1.zip
+    events:
+      sqs:
+        queue_name: tester1
+        batchSize: 1
+    environment:
+      environment: dev
+      region: eu-west-1
+
+ tester-2:
+    handler: tester2::tester2.Function::FunctionHandler
+    memorySize: 1024
+    reservedConcurrency: 3
+    timeout: 600
+    vpc: false
+    package:
+      artifact: tester2/tester2.zip
+    events:
+      s3:
+        bucket_name: tester2
+        batchSize: 1
+    environment:
+      environment: dev
+      region: eu-west-1
+      auth__feature_flag: true
+
+ tester-3:
+    handler: tester3::tester3.Function::FunctionHandler
+    memorySize: 1024
+    reservedConcurrency: 3
+    timeout: 600
+    vpc: false
+    package:
+      artifact: tester3/tester3.zip
+    events:
+      msk:
+        enabled: true
+        topic: example
+        batchSize: 1
+    environment:
+      environment: stg
+      region: eu-central-1
+
